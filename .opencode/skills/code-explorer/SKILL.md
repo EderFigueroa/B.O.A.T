@@ -43,7 +43,7 @@ Trace the one or two most important paths (e.g. an HTTP request reaching the DB,
 
 ##  5. Infrastructure
 
-Look for: Terraform (*.tf), Helm charts, k&s manifests, CloudFormation/CDK/SAM, Pulumi, serverless.yml, Databricks bundles (databricks. yml), Dockerfiles, CI/CD deploy steps, and env/config files. Record the cloud provider, compute, data stores, queues, external services, environments (dev/stage/prod), and how deploys get triggered. If nothing is declared in the repo, say so explicitly. Don't guess.
+Look for: Terraform (*.tf), Helm charts, k&s manifests, CloudFormation/CDK/SAM, Pulumi, serverless.yml, Databricks bundles (databricks. yml), Snowflake Project Definition (snowflake.yml), Dockerfiles, CI/CD deploy steps, and env/config files. Record the cloud provider, compute, data stores, queues, external services, environments (dev/stage/prod), and how deploys get triggered. If nothing is declared in the repo, say so explicitly. Don't guess.
 
 
 ##  6. Write the HTML
