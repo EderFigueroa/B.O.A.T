@@ -22,9 +22,7 @@ metadata:
 
 ##  1. Survey
 
-Read first, in this order: README*, docs/, top-level manifests (package.json, pyproject.toml, requirements*.txt, go.mod, pom.xml, build.gradle, Cargo.toml, Gemfile), Makefile/justfile,
-
-• github/workflows/, Dockerfile*, docker-compose*. List the top two directory levels, skipping node_modules, venv, dist, build, vendor, and git.
+First you need to read the following artifacts: README*, docs/, top-level manifests (package.json, pyproject.toml, requirements*.txt, go.mod, pom.xml, build.gradle, Cargo.toml, Gemfile), Makefile/justfile, .github/workflows/, Dockerfile*, docker-compose*. List the top two directory levels, skipping node_modules, venv, dist, build, vendor, and git.
 
 For large repos, launch parallel explore subagents (one per top-level area instead of reading everything yourself.
 
@@ -45,11 +43,9 @@ Trace the one or two most important paths (e.g. an HTTP request reaching the DB,
 
 ##  5. Infrastructure
 
-Look for: Terraform (*.tf), Helm charts, k&s manifests, CloudFormation/CDK/SAM, Pulumi, serverless.yml, Databricks bundles (databricks. yml), Dockerfiles, CI/CD deploy steps, and env/config files. Record the cloud provider, compute, data stores, queues, external services, environments (dev/stage/prod), and how deploys get triggered.
+Look for: Terraform (*.tf), Helm charts, k&s manifests, CloudFormation/CDK/SAM, Pulumi, serverless.yml, Databricks bundles (databricks. yml), Dockerfiles, CI/CD deploy steps, and env/config files. Record the cloud provider, compute, data stores, queues, external services, environments (dev/stage/prod), and how deploys get triggered. If nothing is declared in the repo, say so explicitly. Don't guess.
 
-If nothing is declared in the repo, say so explicitly. Don't guess.
 
-  
 ##  6. Write the HTML
 
 Use the template below. Rules:
