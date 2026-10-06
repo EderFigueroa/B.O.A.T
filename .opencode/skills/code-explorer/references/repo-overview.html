@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Repository Overview</title>
+
+<!-- --------------------------------------------------------------
+  STYLE (you can keep it as‑is, or swap for your own design)
+-------------------------------------------------------------- -->
+<style>
+  body {font-family: system-ui, sans-serif; margin:0; padding:1rem; line-height:1.6;}
+  h1   {margin-top:2rem; font-size:2rem;}
+  h2   {margin-top:2rem; font-size:1.75rem; border-bottom:2px solid #444;}
+  p    {max-width:80ch;}
+  details {margin-bottom:1.2rem;}
+  summary {cursor:pointer; list-style:none; margin-left:-1rem;}
+  pre, code, .code-role {background:#f5f5f5; font-family:monospace; padding:.2rem .4rem;}
+  .inline {font-weight:bold; color:#0066cc;}
+  table {border-collapse:collapse; width:100%; margin-top:1rem;}
+  th, td {border:1px solid #ddd; padding:.5rem; text-align:left;}
+  tr:nth-child(even){background:#fafafa;}
+  .inline-code {font-weight:normal; color:#333;}
+  /* Mermaid theme */
+  .mermaid {margin-top:2rem;}
+</style>
+
+<!-- --------------------------------------------------------------
+  MERMAID (used for diagrams)
+-------------------------------------------------------------- -->
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({ startOnLoad:true, theme: 'default' });
+</script>
+</head>
+
+<body>
+
+<h1>Repository Overview – <code>&lt;PROJECT_NAME&gt;</code></h1>
+
+<!-- ==============================================================
+     SECTION 1 – Survey (what we looked at)
+================================================================ -->
+<hr>
+<section>
+  <details><summary>🗂️ Survey Summary</summary>
+
+    <!-- Insert a short bullet list of the top‑level directories / files you inspected.
+         Example:
+         - README.md
+         - src/
+         - package.json, Dockerfile, .github/workflows/*.yaml
+         (Feel free to add more entries as needed) -->
+  </details>
+</section>
+
+<!-- ==============================================================
+     SECTION 2 – Purpose & Entry Points
+================================================================ -->
+<section>
+  <h2>🎯 Purpose & Primary Entry Points</h2>
+  <!-- One‑to‑three plain sentences describing the repo’s purpose. -->
+  <p id="purpose-description"><!-- Write here (max 3 sentences, who uses this and what it does) --> </p>
+
+  <details><summary>🚀 Identified Entry Points</summary>
+    <!-- List “where execution starts”. Use one entry per line with a code link.
+         Example:
+         - CLI: `[main()] (src/cli.ts)`<br/>
+         - Web server route: `[/api/v1/users] (routes/user.js)`
+    -->
+  </details>
+
+  <details><summary>📚 API / Exported Library Surface</summary>
+    <!-- If the repo is a library, list exported symbols (functions, classes). -->
+    <!-- Example:
+         - `export function compute(x: number): Promise<number>` – _calculate()_ in `src/calc.ts`
+    -->
+  </details>
+</section>
+
+<!-- ==============================================================
+     SECTION 3 – Core Components & Dependencies
+================================================================ -->
+<section>
+  <h2>🔧 Main Components (responsibility, file‑path, dependencies)</h2>
+  <!-- Table of the 5‑12 most important modules. Keep it short; each row is a module.
+       Only list files that hold *real* logic – skip utils, config boilerplate unless they are
+       direct entry points.
+  -->
+  <div class="details-container">
+    <table class="component-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Module / Class (file)</th>
+          <th>Responsibility</th>
+          <th>Direct Dependencies</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Example row -->
+        <!--
+        <tr>
+          <td>1</td>
+          <td><code><a href="src/server.ts">server.ts</a></code></td>
+          <td>Orchestrates HTTP incoming requests → service layer</td>
+          <td>(<code><a href="auth/auth.js">auth.js</a></code>, (<code><a href="db/index.js">db/index.js</a></code>)) (inferred)</td>
+        </tr>
+        -->
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ==============================================================
+     SECTION 4 – Key Flows (end‑to‑end traces)
+================================================================ -->
+<section>
+  <h2>↗️ Critical Flow(s)</h2>
+
+  <!-- For each flow, describe in ≤ 3 sentences and optionally show a Mermaid diagram. -->
+  <details><summary>🚦 Flow #1 – HTTP request → DB write (example)</summary>
+    <p><!-- Short human‑readable explanation of the path; include function names only --> </p>
+    <!-- Optional Mermaid diagram (keep ≤ 15 nodes). Example: -->
+    <div class="mermaid">
+      graph LR
+        A[Client GET /users] --> B[Request Handler (routes/user.js)]
+        B --> C[UserService.createUser()]
+        C --> D[DynamoDB PutItem]
+        D --> E[Ack 201 Created]
+      </graph>
+    </div>
+  </details>
+
+  <details><summary>🚀 Flow #2 – Background Job → Queue Consumer</summary>
+    <p><!-- short explanation --> </p>
+    <!-- Optional diagram -->
+    <div class="mermaid">
+      graph LR
+        J[Scheduler (cron job)] --> K[JobQueue.push(jobId)]
+        K --> L[Consumer.poll()]
+        L --> M[ProcessingLogic.run(jobId)]
+        M --> N[External API Call]
+        N --> O[Ack completed]
+      </graph>
+    </div>
+  </details>
+</section>
+
+<!-- ==============================================================
+     SECTION 5 – Infrastructure Overview
+================================================================ -->
+<section>
+  <h2>🖥️ Infrastructure Stack (if declared)</h2>
+  <!-- Search for files like *.tf, Helm charts, CloudFormation, Dockerfiles, etc.
+       Summarise only what you can confirm.
+  -->
+  <ul>
+    <li><strong>Cloud Provider:</strong><!-- e.g. AWS / Azure / GCP --> </li>
+    <li><strong>Compute Type:</strong><!-- e.g. ECS/Fargate, Lambda, EC2, Cloud Run --> </li>
+    <li><strong>Data Stores:</strong><!-- relational DB? NoSQL? Cache? --> </li>
+    <li><strong>Additional Services:</strong><!-- queues, auth, CDN → name of resource --> </li>
+    <li><strong>Deploy Trigger:</strong><!-- GitHub Actions?, CI/CD pipeline link? --> </li>
+
+    <!-- If nothing is declared in the repository write: -->
+    <!--
+    <li><strong>Infrastructure Declarations:</strong> None found. All infrastructure appears to be managed externally.</li>
+    -->
+  </ul>
+</section>
+
+<!-- ==============================================================
+     SECTION 6 – Open Questions / Uncertainties
+================================================================ -->
+<section>
+  <h2>❓ Open Questions</h2>
+  <!-- List anything you could *not* verify. Do NOT guess. Each line should end with “(inferred)” if it’s an assumption, otherwise just state the unknown.
+       Example:
+       - Which environment (dev/stage/prod) is used by default? (unknown)
+       - Where are secret keys stored? (inferred: maybe AWS Secrets Manager, but not confirmed)
+  -->
+  <ul>
+    <!-- Add your questions here -->
+  </ul>
+</section>
+
+<!-- ==============================================================
+     SECTION 7 – Summary for Chat / Highlight (the final 3‑5 sentence recap)
+================================================================ -->
+<section>
+  <h2>📝 TL;DR Summary</h2>
+  <p><!-- Insert a concise 3‑5 sentence human summary of the repository: what it does, who uses it, key component(s), and any notable deployment pattern. This is the text you will read aloud or send in chat after generating the HTML file --> </p>
+</section>
+
+<hr>
+<footer style="margin-top:4rem; font-size:.9rem; color:#666;">
+  Generated by <code>repo-overview.html</code>. Edit placeholders (<!-- … -->) with verified information before publishing.
+</footer>
+
+</body>
+</html>
+
