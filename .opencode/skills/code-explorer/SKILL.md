@@ -33,7 +33,7 @@ Find where execution starts: main, CLI definitions, server bootstrap, HTTP route
 
 ##   3. Components and relationships
 
-Pick the 5-12 classes/modules that matter most (high fan-in, entry points, core domain models).
+Pick the 5-12 classes/modules/scripts that matter most (high fan-in, entry points, core domain models).
 
 For each one, record its responsibility, its file path, and what it depends on. Skip utilities and boilerplate.
 
